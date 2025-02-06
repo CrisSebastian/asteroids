@@ -15,16 +15,26 @@ def main():
 
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
+    #Groups will be declared here
+    updatable_group = pygame.sprite.Group()
+    drawable_group = pygame.sprite.Group()
+
+    Player.containers = (updatable_group, drawable_group)
+
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
         
         pygame.Surface.fill(screen, (0,0,0))
-        player.draw(screen)
-        player.update(delta)
+
+        updatable_group.update(delta)
+
+        for member in drawable_group:
+            member.draw(screen)
+
         pygame.display.flip()
-        clock.tick(60)
+
         delta = clock.tick(60) / 1000
 
 

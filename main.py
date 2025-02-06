@@ -22,6 +22,7 @@ def main():
         
         pygame.Surface.fill(screen, (0,0,0))
         player.draw(screen)
+        player.update(delta)
         pygame.display.flip()
         clock.tick(60)
         delta = clock.tick(60) / 1000

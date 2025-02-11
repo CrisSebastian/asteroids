@@ -46,10 +46,17 @@ def main():
 
         pygame.display.flip()
 
-        for member in asteroid_group:
-            if player.check_collision(member):
+        for asteroid in asteroid_group:
+            if player.check_collision(asteroid):
                 print("Game over!")
                 raise SystemExit()
+
+            for shot in shots_group:
+                if shot.check_collision(asteroid):
+                    asteroid.split()
+                    shot.kill()
+                    break
+
 
         delta = clock.tick(60) / 1000
 

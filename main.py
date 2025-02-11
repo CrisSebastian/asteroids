@@ -43,6 +43,11 @@ def main():
 
         pygame.display.flip()
 
+        for member in asteroid_group:
+            if player.check_collision(member):
+                print("Game over!")
+                raise SystemExit()
+
         delta = clock.tick(60) / 1000
 
 

@@ -31,3 +31,4 @@ class CircleShape(pygame.sprite.Sprite):
         else:
             colliding = False
         return colliding
+    
